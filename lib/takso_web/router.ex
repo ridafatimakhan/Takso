@@ -18,10 +18,11 @@ defmodule TaksoWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+    resources "/users", UserController
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", TaksoWeb do
+  # scope "/api", TaksoWeb domix phx.server
   #   pipe_through :api
   # end
 
