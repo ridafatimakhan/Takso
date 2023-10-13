@@ -11,12 +11,12 @@ defmodule TaksoWeb.UserController do
     changeset = User.changeset(%User{}, %{})
     render(conn, "new.html", changeset: changeset)
   end
-  def create(conn, %{"user" => user_params}) do
-    changeset = User.changeset(%User{}, user_params)
+  # def create(conn, %{"user" => user_params}) do
+  #   changeset = User.changeset(%User{}, user_params)
 
-    Repo.insert(changeset)
-    redirect(conn, to: ~p"/users")
-  end
+  #   Repo.insert(changeset)
+  #   redirect(conn, to: ~p"/users")
+  # end
   def edit(conn, %{"id" => id}) do
     user = Repo.get!(User, id)
     changeset = User.changeset(user, %{})
@@ -29,6 +29,7 @@ defmodule TaksoWeb.UserController do
     Repo.update(changeset)
     redirect(conn, to: ~p"/users")
   end
+
   def create(conn, %{"user" => user_params}) do
     changeset = User.changeset(%User{}, user_params)
     case Repo.insert(changeset) do
@@ -39,5 +40,10 @@ defmodule TaksoWeb.UserController do
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
+  end
+
+  def show(conn, %{"id" => id}) do
+    user = Repo.get!(User, id)
+    render(conn, "show.html", user: user)
   end
 end
