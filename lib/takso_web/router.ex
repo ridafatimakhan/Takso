@@ -43,3 +43,16 @@ defmodule TaksoWeb.Router do
     end
   end
 end
+
+# defmodule TaksoWeb.Router.Helpers do
+#   use Phoenix.HTML, :quote
+#   def user_path(_conn, :show, _user) do
+#     quote do
+#       Routes.user_path(:show, user)
+#     end
+#   end
+# #   @spec user_path(any(), :show, any()) ::
+# #           {{:., [{any(), any()}, ...], [:user_path | {any(), any(), any()}, ...]},
+# #            [{:closing, [...]} | {:column, 14}, ...],
+# #            [:show | {:user, [...], TaksoWeb.Router.Helpers}, ...]}
+# # end

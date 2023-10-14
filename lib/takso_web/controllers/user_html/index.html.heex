@@ -11,6 +11,7 @@
   <:col :let={user} label="Name"><%= user.name %></:col>
   <:col :let={user} label="Username"><%= user.username %></:col>
   <:col :let={user} label="Password"><%= user.password %></:col>
+  <:col :let={user} label="Age"><%= user.age %></:col>
     <:action :let={user}>
     <div class="sr-only">
       <.link navigate={~p"/users/#{user}"}>Show</.link>
