@@ -9,4 +9,10 @@ defmodule TaksoWeb.BookingController do
     render conn, "index.html"
   end
 
+  def create(conn, _params) do
+    conn
+      |> put_flash(:info, "Your taxi will arrive in 15 minutes.")
+      |> redirect(to: ~p"/bookings")
+    end
+
 end

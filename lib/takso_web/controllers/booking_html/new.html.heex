@@ -4,9 +4,10 @@
   
   <h2>Site under construction.</h2>
   
-  <form action="/bookings">
-    <input id="pickup_address">
-    <input id="dropoff_address">
-    <button id="submit_button">Submit</button>
-  </form>
+<form action="/bookings" method="post">
+  <input id="pickup_address">
+  <input id="dropoff_address">
+  <button id="submit_button" type="submit">Submit</button>
+  <input type="hidden" value={Phoenix.Controller.get_csrf_token()} name="_csrf_token" />
   
+</form>
