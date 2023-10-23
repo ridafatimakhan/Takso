@@ -89,4 +89,5 @@ defmodule TaksoWeb.Telemetry do
       # {TaksoWeb, :count_users, []}
     ]
   end
+
 end

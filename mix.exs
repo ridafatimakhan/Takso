@@ -9,7 +9,8 @@ defmodule Takso.MixProject do
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      preferred_cli_env: ["white_bread.run": :test]
     ]
   end
 
@@ -50,7 +51,11 @@ defmodule Takso.MixProject do
       {:gettext, "~> 0.20"},
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.1.1"},
-      {:plug_cowboy, "~> 2.5"}
+      {:plug_cowboy, "~> 2.5"},
+      {:gherkin, "~> 1.4.0"},  # Old gherkin dependency to ensure compatibility with white_bread
+      {:white_bread, "~> 4.5", only: [:test]} , # Latest white_bread dependency
+      {:hound, "~> 1.0"}
+
     ]
   end
 
