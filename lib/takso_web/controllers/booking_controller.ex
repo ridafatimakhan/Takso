@@ -15,4 +15,5 @@ defmodule TaksoWeb.BookingController do
       |> redirect(to: ~p"/bookings")
     end
 
+
 end

@@ -1,22 +1,27 @@
 defmodule WhiteBreadContext do
+  alias Takso.{Repo,Sales.Taxi}
   use WhiteBread.Context
   use Hound.Helpers
   feature_starting_state fn  ->
     Application.ensure_all_started(:hound)
     %{}
   end
-  scenario_starting_state fn _state ->
+  scenario_starting_state fn state ->
     Hound.start_session
+    Ecto.Adapters.SQL.Sandbox.checkout(Takso.Repo)
+    Ecto.Adapters.SQL.Sandbox.mode(Takso.Repo, {:shared, self()})
     %{}
   end
 
   scenario_finalize fn _status, _state ->
+    Ecto.Adapters.SQL.Sandbox.checkin(Takso.Repo)
     # Hound.end_session
-    Nill
   end
 
-  given_ ~r/^the following taxis are on duty$/, fn state ->
-    # You will work on this one for HW3
+  given_ ~r/^the following taxis are on duty$/, fn state, %{table_data: table} ->
+    table
+    |> Enum.map(fn taxi -> Taxi.changeset(%Taxi{}, taxi) end)
+    |> Enum.each(fn changeset -> Repo.insert!(changeset) end)
     {:ok, state}
   end
 
@@ -53,5 +58,7 @@ defmodule WhiteBreadContext do
     {:ok, state}
   end
 
-
+  then_ ~r/^I should receive a rejection message$/, fn state ->
+    {:ok, state}
+  end
 end
