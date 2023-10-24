@@ -14,6 +14,7 @@ defmodule Takso.Bookingservices.Booking do
     struct
     |> cast(params, [:pickup_address, :dropoff_address])
     |> validate_required([:pickup_address, :dropoff_address])
+    |> validate_required(:pickup_address, :dropoff_address)
 
   end
 end

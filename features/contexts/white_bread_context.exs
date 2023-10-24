@@ -61,4 +61,10 @@ defmodule WhiteBreadContext do
   then_ ~r/^I should receive a rejection message$/, fn state ->
     {:ok, state}
   end
+
+  then_ ~r/^I should receive an error saying "(?<argument_one>[^"]+)"$/,
+fn state, %{argument_one: _argument_one} ->
+  {:ok, state}
+end
+
 end
