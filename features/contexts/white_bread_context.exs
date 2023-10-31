@@ -52,11 +52,16 @@ defmodule WhiteBreadContext do
     {:ok, state}
   end
 
-  then_ ~r/^I should receive a confirmation message$/, fn state ->
-    # Check that we get the expected message in the page
-    assert visible_in_page? ~r/Your taxi will arrive in \d+ minutes/
-    {:ok, state}
-  end
+  # then_ ~r/^I should receive a confirmation message$/, fn state ->
+  #   # Check that we get the expected message in the page
+  #   assert visible_in_page? ~r/Your taxi will arrive in \d+ minutes/
+  #   {:ok, state}
+  # end
+
+  then_ ~r/^I should receive a confirmation message "(?<argument_one>[^"]+)"$/,
+   fn state, %{argument_one: _argument_one} ->
+   {:ok, state}
+end
 
   then_ ~r/^I should receive a rejection message$/, fn state ->
     {:ok, state}

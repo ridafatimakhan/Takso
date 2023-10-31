@@ -8,6 +8,7 @@ defmodule Takso.Sales.Booking do
     field :status, :string, default: "open"
     belongs_to :user, Takso.Accounts.User
 
+
     timestamps()
   end
 

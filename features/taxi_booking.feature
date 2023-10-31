@@ -12,7 +12,7 @@ Feature: Taxi booking
     And I open STRS' web page
     And I enter the booking information
     When I summit the booking request
-    Then I should receive a confirmation message
+    Then I should receive a confirmation message "Your taxi will arrive in \d+ minutes"
 
   Scenario: Booking via STRS' web page (with rejection)
         Given the following taxis are on duty
